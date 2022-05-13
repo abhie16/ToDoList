@@ -9,15 +9,21 @@ app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
     var today = new Date();
-    var day = "";
+    var options ={
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    };
+    var day = today.toLocaleDateString("en-US", options)
+
     const weekday =["Sunday","Monday","Tuesday","Wednesday","Thurday","Friday","Saturday"]
 
   if(today.getDay() === 6 || today.getDay() === 0){
-      day = weekday[today.getDay()];
+    //   day = weekday[today.getDay()];
       res.render("list",{kindOfDay: day});
   }
   else{
-      day = weekday[today.getDay()];
+    //   day = weekday[today.getDay()];
       res.render("list",{kindOfDay: day});
   }
 
